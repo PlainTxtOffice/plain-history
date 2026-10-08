@@ -1,0 +1,41 @@
+# last updated 2026-08-09
+# Python-generated files
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+__pycache__/
+
+# Nuitka build artifacts
+*.build/
+*.dist/
+*.onefile-build/
+
+# virtual environments
+.venv**
+
+# directories
+logs/
+build/
+main.build/
+main.dist/
+main.onefile-build/
+
+
+# files
+*.pdf
+*.db
+.env
+dev-docs/prompt_template.md
+.agents/*memory.local.*
+dev-docs/packaging/nuitka/installing_nuitka.md
+
+# Local tooling and document history
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+.plain_history/
+packaging/advanced-installer/

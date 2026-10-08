@@ -1,0 +1,122 @@
+#:schema https://json.schemastore.org/pyproject.json
+
+[build-system]
+requires = ["setuptools>=77", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "plain-history"
+version = "0.1.0"
+description = "Version history for writers and plain-text documents"
+readme = "README.md"
+requires-python = ">=3.12"
+authors = [{ name = "Tripp", email = "tripp@plaintxtoffice.com" }]
+license = "MIT"
+license-files = ["LICENSE"]
+dependencies = ["typer>=0.12,<1", "PySide6>=6.8,<7"]
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "ruff", "rumdl", "mypy"]
+
+
+[project.scripts]
+phist = "src.cli.app:main"
+
+[project.gui-scripts]
+phist-gui = "src.gui.app:main"
+
+[tool.setuptools]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["src", "src.domains", "src.adapters", "src.cli*", "src.gui*"]
+namespaces = true
+
+[tool.pytest.ini_options]
+addopts = "-s"
+testpaths = ["tests"]
+
+[tool.ruff]
+namespace-packages = ["src/domains"]
+line-length = 80
+extend-exclude = ["tests"]
+# Apply the exclusion when the editor or a hook passes a file directly.
+force-exclude = true
+
+[tool.ruff.lint]
+select = ["ALL"]
+ignore = [
+    # No per-file copyright headers.
+    "CPY001",
+    # Conflicts with ruff format; its added commas stop calls from rejoining.
+    "COM812",
+    # Pick one of each conflicting docstring pair: D211 and D212 stay on.
+    "D203",
+    "D213",
+    "DOC201",
+    "DOC501",
+]
+
+[tool.ruff.lint.pep8-naming]
+# Qt and logging overrides must keep their camelCase names.
+extend-ignore-names = ["closeEvent", "formatTime", "paintCell", "resizeEvent"]
+
+
+[tool.ruff.lint.per-file-ignores]
+"src/main.py" = ["E402"]
+# Stub commands keep their future user-facing arguments.
+"src/cli/app.py" = ["ARG001"]
+# Pytest style: plain asserts, optional annotations, fixture-only arguments,
+# private access, and local imports are expected in tests.
+"tests/**" = [
+    "ANN",
+    "ARG001",
+    "ARG005",
+    "INP001",
+    "PLC0415",
+    "PLR2004",
+    "S101",
+    "SLF001",
+]
+
+[tool.ruff.lint.flake8-import-conventions.extend-aliases]
+"decimal.Decimal" = "D"
+
+[tool.mypy]
+exclude = ['(^|[\\/])tests([\\/]|$)']
+ignore_missing_imports = true
+
+[tool.pymarkdown]
+extensions.front-matter.enabled = true
+
+[tool.rumdl]
+# Match the 80-column wrap used by ruff and the editor.
+line-length = 80
+
+exclude = [".venv", "build", "dist"]
+# Also covers the ignored paths not listed above, such as .pytest_cache/ and
+# logs/, and keeps covering whatever .gitignore gains later.
+respect-gitignore = true
+
+[tool.rumdl.MD010]
+# Expand tabs to 2 spaces, not the default 4.
+spaces-per-tab = 2
+[tool.rumdl.MD029]
+# Style options:
+# - "one" or "one-one": All items numbered "1." (easiest maintenance)
+# - "ordered": Sequential numbering (1, 2, 3...)
+# - "ordered0": Zero-based sequential (0, 1, 2...)
+# - "one-or-ordered": Auto-detect per list (either all-ones OR sequential)
+# - "consistent": Document-wide consistency - uses most common style across all lists
+style = "one"
+
+[tool.rumdl.MD013]
+# Commands and paths inside fenced blocks cannot be wrapped to 80.
+code-blocks = false
+# Markdown table rows cannot be wrapped without breaking their structure.
+tables = false
+# Let `rumdl fmt` rewrap paragraphs, list items, and blockquotes whose lines
+# run past line-length. The default mode leaves lines already under the
+# limit alone, unlike "normalize".
+reflow = true
+reflow-mode = "default"
