@@ -1,5 +1,5 @@
 ---
-last_updated: 2026-10-07
+last_updated: 2026-10-14
 ---
 
 # Plain History
@@ -18,9 +18,9 @@ subfolders.
 Download the CLI from
 [GitHub releases](https://github.com/plaintxtoffice/plain-history/releases):
 
-- **Installer:** `plain-history-cli-0.1.0-x64-setup.exe` installs the CLI.
+- **Installer:** `plain-history-cli-0.2.0-x64-setup.exe` installs the CLI.
   Select the option to add `phist` to PATH, then open a new terminal.
-- **Portable:** `phist-0.1.0-windows-x64-portable.exe` runs without
+- **Portable:** `phist-0.2.0-windows-x64-portable.exe` runs without
   installation. You can rename it to `phist.exe`. From PowerShell in the folder
   containing it, run `./phist.exe --help`. Use `--path` to select a different
   writing folder.
@@ -28,8 +28,8 @@ Download the CLI from
   `SHA256SUMS.txt` lists checksums for the downloads.
 
 Both CLI downloads run without a separate Python installation or a virtual
-environment. The desktop interface is still a starter and is available only
-when running from source.
+environment. The desktop window is not part of these downloads yet; run it from
+source as described below.
 
 ## Quick start
 
@@ -81,11 +81,15 @@ including:
 
 ## Run or build from source
 
+Each platform's application lives in its own folder under `platform/`. Windows
+is implemented today; macOS and Linux versions are planned.
+
 The `.venv/` setup below is for developers and anyone running or building Plain
-History from source. Use Python 3.12 or newer. From the repository folder in
-PowerShell:
+History from source on Windows. Use Python 3.12 or newer. From the repository
+folder in PowerShell:
 
 ```powershell
+Set-Location platform/windows
 python -m venv .venv
 .venv/Scripts/python.exe -m pip install -e ".[dev]"
 .venv/Scripts/phist.exe --help
@@ -93,19 +97,28 @@ python -m venv .venv
 
 Installing without `[dev]` installs only the application dependencies.
 Virtual environment activation is optional. After activation, you can run
-`phist` directly. To open the starter desktop interface, run
-`.venv/Scripts/phist-gui.exe`.
+`phist` directly.
 
-See the [Nuitka build guide](scripts/nuitka/README.md) for standalone and
-onefile CLI builds using the project's virtual environment.
+To open the desktop window, run `.venv/Scripts/phist-gui.exe`. Choose your
+writing folder, choose the documents to keep history for, and use
+**Save snapshot…** to save a draft. Select a snapshot to compare its documents
+with your current draft or restore them. The window reopens your last folder
+the next time it starts. See the
+[User Manual](docs/USER_MANUAL.md#tour-the-desktop-window) for a tour.
+
+See the [Nuitka build guide](platform/windows/scripts/nuitka/README.md) for
+standalone and onefile CLI builds and the windowed desktop build, using the
+project's virtual environment.
 
 ### Development checks
 
+From `platform/windows/`:
+
 ```powershell
 .venv/Scripts/python.exe -m pytest
-.venv/Scripts/python.exe -m ruff check src
-.venv/Scripts/python.exe -m mypy src
-rumdl check README.md docs/USER_MANUAL.md scripts/nuitka/README.md
+.venv/Scripts/python.exe -m ruff check plain_history
+.venv/Scripts/python.exe -m mypy plain_history
+.venv/Scripts/rumdl.exe check
 ```
 
 ## License

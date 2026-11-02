@@ -1,0 +1,55 @@
+# Shell scripts must keep LF endings; CRLF breaks them under sh.
+.githooks/* text eol=lf
+*.sh text eol=lf
+
+# Project text files use the repository-wide LF convention.
+.gitattributes text eol=lf
+.gitignore text eol=lf
+.github-push text eol=lf
+.ignore text eol=lf
+*.json text eol=lf
+*.csv text eol=lf
+*.yaml text eol=lf
+*.yml text eol=lf
+*.md text eol=lf
+*.ps1 text eol=lf
+*.py text eol=lf
+*.toml text eol=lf
+*.svg text eol=lf
+*.ico binary
+
+# Swift and Xcode text files keep LF so Xcode reads the same files a Mac would
+# check out, including working trees opened over a network share.
+*.swift text eol=lf
+*.h text eol=lf
+*.m text eol=lf
+*.pbxproj text eol=lf
+*.xcscheme text eol=lf
+*.xcworkspacedata text eol=lf
+*.xcsettings text eol=lf
+*.xcconfig text eol=lf
+*.entitlements text eol=lf
+*.xcprivacy text eol=lf
+*.xcstrings text eol=lf
+# Android and Gradle text files keep LF; the Unix gradlew launcher fails with
+# CRLF on macOS, Linux, and CI runners. The Windows launcher keeps CRLF.
+*.kt text eol=lf
+*.kts text eol=lf
+*.gradle text eol=lf
+*.java text eol=lf
+*.xml text eol=lf
+*.properties text eol=lf
+*.pro text eol=lf
+gradlew text eol=lf
+*.bat text eol=crlf
+*.jar binary
+*.png binary
+*.webp binary
+
+# Property lists may be binary and .strings files may be UTF-16; text=auto
+# skips files Git detects as binary instead of rewriting their bytes.
+*.plist text=auto eol=lf
+*.strings text=auto eol=lf
+*.stringsdict text=auto eol=lf
+*.storyboard text eol=lf
+*.xib text eol=lf

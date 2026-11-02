@@ -1,4 +1,4 @@
-# last updated 2026-08-09
+# last updated 2026-11-01
 # Python-generated files
 *.py[oc]
 build/
@@ -29,13 +29,20 @@ main.onefile-build/
 .env
 dev-docs/prompt_template.md
 .agents/*memory.local.*
-dev-docs/packaging/nuitka/installing_nuitka.md
+
 
 # Local tooling and document history
 .pytest_cache/
 .ruff_cache/
 .mypy_cache/
-.coverage
-htmlcov/
+.rumdl_cache/
+
 .plain_history/
-packaging/advanced-installer/
+# Track Advanced Installer projects; ignore their backups and build caches.
+platform/windows/dev-docs/packaging/advanced_installer/*
+!platform/windows/dev-docs/packaging/advanced_installer/*.aip
+!platform/windows/dev-docs/packaging/advanced_installer/*.md
+platform/windows/dev-docs/packaging/advanced_installer/*.back(*).aip
+
+# macOS Finder metadata
+.DS_Store
