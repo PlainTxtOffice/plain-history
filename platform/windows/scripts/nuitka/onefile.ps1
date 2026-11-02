@@ -84,7 +84,7 @@ print(json.dumps({
     else { Write-Warning 'Building unsigned: signing needs Nuitka Commercial and WINDOWS_CERTIFICATE_SHA1.' }
     & $pythonPath -c 'import zstandard'
     if ($LASTEXITCODE -ne 0) {
-        throw "Compressed onefile builds need zstandard. Run: & '$pythonPath' -m pip install 'nuitka[onefile]'"
+        throw "Compressed onefile builds need zstandard. Run: & '$pythonPath' -m pip install zstandard"
     }
     [IO.Directory]::CreateDirectory($outputPath) | Out-Null
     # No portable.marker: the CLI has no app data folder to place beside the exe.

@@ -12,8 +12,9 @@ Run these commands from `platform/windows/` in PowerShell 7:
 Each command works without arguments. The selected interpreter defaults to
 `.venv/Scripts/python.exe`; install the application and Nuitka into that
 environment first, with `.venv/Scripts/python.exe -m pip install -e .` and
-`.venv/Scripts/python.exe -m pip install "nuitka[onefile]"`. Onefile
-compression needs the `zstandard` support that `nuitka[onefile]` provides.
+`.venv/Scripts/python.exe -m pip install "nuitka[onefile]" zstandard`.
+Onefile compression needs `zstandard`, which `nuitka[onefile]` does not
+install.
 Builds use the latest installed MSVC compiler.
 
 Plain History has two programs. The standard scripts build the `phist`

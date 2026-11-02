@@ -68,7 +68,9 @@ jobs:
 
       - name: Install project and Nuitka
         # Keep the Nuitka version in step with the one used for local builds.
-        run: .venv/Scripts/python.exe -m pip install -e . "nuitka[onefile]==4.2.2"
+        # The onefile extra of Nuitka 4.2.2 does not install zstandard, so the
+        # onefile build needs it listed separately.
+        run: .venv/Scripts/python.exe -m pip install -e . "nuitka[onefile]==4.2.2" zstandard
 
       - name: Build with Nuitka
         # standalone.ps1 and gui.ps1 also run validate_release.ps1.
