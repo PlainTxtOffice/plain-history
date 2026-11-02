@@ -82,9 +82,14 @@ print(json.dumps({
         $nuitkaArguments += @('--enable-plugin=signtool', "--windows-certificate-sha1=$certificate")
     }
     else { Write-Warning 'Building unsigned: signing needs Nuitka Commercial and WINDOWS_CERTIFICATE_SHA1.' }
-    & $pythonPath -c 'import zstandard'
+    # Nuitka compresses with Python 3.14's compression.zstd and falls back to
+    # the zstandard package on older versions.
+    & $pythonPath -c 'import compression.zstd' 2>$null
     if ($LASTEXITCODE -ne 0) {
-        throw "Compressed onefile builds need zstandard. Run: & '$pythonPath' -m pip install zstandard"
+        & $pythonPath -c 'import zstandard'
+        if ($LASTEXITCODE -ne 0) {
+            throw "Onefile compression needs zstd support. Run: & '$pythonPath' -m pip install zstandard"
+        }
     }
     [IO.Directory]::CreateDirectory($outputPath) | Out-Null
     # No portable.marker: the CLI has no app data folder to place beside the exe.

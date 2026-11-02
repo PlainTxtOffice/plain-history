@@ -13,8 +13,8 @@ Each command works without arguments. The selected interpreter defaults to
 `.venv/Scripts/python.exe`; install the application and Nuitka into that
 environment first, with `.venv/Scripts/python.exe -m pip install -e .` and
 `.venv/Scripts/python.exe -m pip install "nuitka[onefile]" zstandard`.
-Onefile compression needs `zstandard`, which `nuitka[onefile]` does not
-install.
+Onefile compression uses Python 3.14's built-in `compression.zstd`, or the
+`zstandard` package on older versions; `nuitka[onefile]` does not install it.
 Builds use the latest installed MSVC compiler.
 
 Plain History has two programs. The standard scripts build the `phist`
