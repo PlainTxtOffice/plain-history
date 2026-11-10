@@ -1,8 +1,33 @@
----
-last_updated: 2026-11-09
+<!-- last_updated: 2026-11-09 -->
+<!-- rumdl-disable MD033 MD041 -->
+<p align="center">
+  <img src="assets/icons/plain_history.svg" alt="Plain History icon: a document page with a folded corner" width="96">
+</p>
+
+<h1 align="center">Plain History</h1>
+
+<p align="center">
+  Version history for writers: save snapshots of your plain-text drafts, then
+  compare or restore earlier versions.
+</p>
+
+<p align="center">
+  <a href="https://github.com/PlainTxtOffice/plain-history/releases/latest"><img src="https://img.shields.io/github/v/release/PlainTxtOffice/plain-history?label=release" alt="Latest release"></a>
+  <a href="#download"><img src="https://img.shields.io/badge/platform-Windows%20CLI-informational" alt="Platform: Windows command line"></a>
+</p>
+
+<p align="center">
+  <a href="#download">Download</a> ·
+  <a href="#quick-start">Quick start</a> ·
+  <a href="docs/USER_MANUAL.md">User manual</a> ·
+  <a href="docs/HISTORY_FORMAT.md">History format</a> ·
+  <a href="https://plaintxtoffice.com/apps/">Website</a>
+</p>
+<!-- rumdl-enable MD033 MD041 -->
+
 ---
 
-# Plain History
+## About
 
 Plain History helps writers keep version history for plain-text documents. Track
 the files you choose, save snapshots of your drafts, and compare or restore
@@ -12,27 +37,35 @@ Keep a history of a single document or a project organized into chapters and
 subfolders. Snapshots stay in your writing folder, so you can review earlier
 drafts without an account or an online service.
 
-## Download the Windows CLI
+Plain History is a command-line program for Windows. You run it from a
+terminal; the downloads do not include a desktop window.
 
-Download **Plain History 0.3.0 for Windows x64** from the
-[release page](https://github.com/plaintxtoffice/plain-history/releases/tag/v0.3.0):
+## Features
 
-- **Installer:** `plain-history-cli-0.3.0-x64-setup.exe` installs the CLI.
-  Select the option to add `phist` to PATH, then open a new terminal.
-- **Portable:** `phist-0.3.0-windows-x64-portable.exe` runs without
-  installation. You can rename it to `phist.exe`. From PowerShell in the folder
-  containing it, run `./phist.exe --help`. Use `--path` to select a different
-  writing folder.
-- **License and checksums:** `LICENSE` contains the proprietary license, and
-  `SHA256SUMS.txt` lists checksums for the downloads.
+- Choose which files to track with file names or glob patterns.
+- Save a snapshot with a message and an optional version label.
+- List saved snapshots and see what the latest one contains.
+- Compare a saved document with its current contents.
+- Restore files from an earlier snapshot, with a confirmation first.
 
-Both downloads run without a separate Python installation. They are terminal
-applications; the desktop window is not included. macOS and Linux downloads are
-not available.
+## Download
 
-The executables are unsigned. See the release notes for validation results and
-the installer limitations. To check a download, compare the output of
-`Get-FileHash -Algorithm SHA256 PATH_TO_DOWNLOAD` with `SHA256SUMS.txt`.
+Plain History 0.3.0 for Windows x64:
+
+| Download | File | Notes |
+| --- | --- | --- |
+| Installer | [plain-history-cli-0.3.0-x64-setup.exe](https://github.com/PlainTxtOffice/plain-history/releases/download/v0.3.0/plain-history-cli-0.3.0-x64-setup.exe) | Installs the CLI. Select the option to add `phist` to PATH, then open a new terminal. |
+| Portable | [phist-0.3.0-windows-x64-portable.exe](https://github.com/PlainTxtOffice/plain-history/releases/download/v0.3.0/phist-0.3.0-windows-x64-portable.exe) | Runs without installation. You can rename it to `phist.exe`. |
+| Checksums | [SHA256SUMS.txt](https://github.com/PlainTxtOffice/plain-history/releases/download/v0.3.0/SHA256SUMS.txt) | Checksums for both downloads. |
+
+Both downloads run without a separate Python installation. macOS and Linux
+downloads are not available.
+
+The executables are unsigned. See the
+[release notes](https://github.com/PlainTxtOffice/plain-history/releases/tag/v0.3.0)
+for validation results and the installer limitations. To check a download,
+compare the output of `Get-FileHash -Algorithm SHA256 PATH_TO_DOWNLOAD` with
+`SHA256SUMS.txt`.
 
 ## Quick start
 
@@ -50,7 +83,8 @@ Keep quotation marks around patterns. When saving, enter a short message and
 choose whether to add a version label. After editing your documents, run
 `phist save` again to capture another draft.
 
-For the portable download, replace `phist` with the path to its executable.
+For the portable download, replace `phist` with the path to its executable,
+for example `./phist.exe --help` from PowerShell in the folder containing it.
 Every command accepts `--path FOLDER` or `-p FOLDER`; otherwise, it uses the
 terminal's current folder.
 
@@ -70,7 +104,7 @@ terminal's current folder.
 Use `phist COMMAND --help` for help with any command. Run `phist save` before
 restoring if you want to preserve your current draft.
 
-## User manual
+## User Manual
 
 The [User Manual](docs/USER_MANUAL.md) explains the workflows in detail,
 including:

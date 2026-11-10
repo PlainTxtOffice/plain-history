@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256">
+  <title>Plain History</title>
+  <!-- Page with a folded corner -->
+  <path d="M64 16H168L216 64V224Q216 240 200 240H64Q48 240 48 224V32Q48 16 64 16Z"
+        fill="#F4F6F9" stroke="#3A4452" stroke-width="12" stroke-linejoin="round"/>
+  <path d="M168 16V52Q168 64 180 64H216"
+        fill="#D9DFE7" stroke="#3A4452" stroke-width="12" stroke-linejoin="round"/>
+  <!-- Snapshot timeline down the margin -->
+  <path d="M96 96V192" stroke="#0067C0" stroke-width="10" stroke-linecap="round"/>
+  <circle cx="96" cy="96" r="18" fill="#0067C0"/>
+  <circle cx="96" cy="144" r="18" fill="#0067C0"/>
+  <circle cx="96" cy="192" r="18" fill="#0067C0"/>
+  <!-- Lines of text beside each snapshot -->
+  <rect x="130" y="88" width="60" height="16" rx="8" fill="#8C97A6"/>
+  <rect x="130" y="136" width="48" height="16" rx="8" fill="#8C97A6"/>
+  <rect x="130" y="184" width="60" height="16" rx="8" fill="#8C97A6"/>
+</svg>
