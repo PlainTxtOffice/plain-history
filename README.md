@@ -8,15 +8,14 @@ Plain History helps writers keep version history for plain-text documents. Track
 the files you choose, save snapshots of your drafts, and compare or restore
 previous versions.
 
-The goal is to make version control approachable for writers with little or no
-programming experience, using descriptive commands and documentation. You can
-track a single document or a project organized into chapters, sections, and
-subfolders.
+Keep a history of a single document or a project organized into chapters and
+subfolders. Snapshots stay in your writing folder, so you can review earlier
+drafts without an account or an online service.
 
 ## Download the Windows CLI
 
-Download the CLI from
-[GitHub releases](https://github.com/plaintxtoffice/plain-history/releases):
+Download **Plain History 0.3.0 for Windows x64** from the
+[release page](https://github.com/plaintxtoffice/plain-history/releases/tag/v0.3.0):
 
 - **Installer:** `plain-history-cli-0.3.0-x64-setup.exe` installs the CLI.
   Select the option to add `phist` to PATH, then open a new terminal.
@@ -27,9 +26,13 @@ Download the CLI from
 - **License and checksums:** `LICENSE` contains the proprietary license, and
   `SHA256SUMS.txt` lists checksums for the downloads.
 
-Both CLI downloads run without a separate Python installation or a virtual
-environment. The desktop window is not part of these downloads yet; run it from
-source as described below.
+Both downloads run without a separate Python installation. They are terminal
+applications; the desktop window is not included. macOS and Linux downloads are
+not available.
+
+The executables are unsigned. See the release notes for validation results and
+the installer limitations. To check a download, compare the output of
+`Get-FileHash -Algorithm SHA256 PATH_TO_DOWNLOAD` with `SHA256SUMS.txt`.
 
 ## Quick start
 
@@ -79,51 +82,22 @@ including:
 - [Restoring files](docs/USER_MANUAL.md#restore-files-from-a-saved-snapshot).
 - [Troubleshooting](docs/USER_MANUAL.md#troubleshooting).
 
-## Run or build from source
+The manual also describes the separately developed desktop window. Those
+sections do not apply to the CLI downloads. The
+[History Format](docs/HISTORY_FORMAT.md) documents how snapshots are stored in a
+writing folder.
 
-These instructions are for users with separately authorized source access.
-This GitHub repository distributes documentation and release downloads; the
-application source and build scripts are not included.
+## Help and maintenance
 
-Each platform's application lives in its own folder under `platform/`. Windows
-is implemented today; macOS and Linux versions are planned.
+Start with the [troubleshooting guide](docs/USER_MANUAL.md#troubleshooting) or
+run `phist COMMAND --help`. For support, contact
+[tripp@plaintxtoffice.com](mailto:tripp@plaintxtoffice.com). Include your
+Windows version, the output of `phist --version`, the command you ran, and the
+error message. Do not include private documents.
 
-The `.venv/` setup below is for developers and anyone running or building Plain
-History from source on Windows. Use Python 3.12 or newer. From the repository
-folder in PowerShell:
-
-```powershell
-Set-Location platform/windows
-python -m venv .venv
-.venv/Scripts/python.exe -m pip install -e ".[dev]"
-.venv/Scripts/phist.exe --help
-```
-
-Installing without `[dev]` installs only the application dependencies.
-Virtual environment activation is optional. After activation, you can run
-`phist` directly.
-
-To open the desktop window, run `.venv/Scripts/phist-gui.exe`. Choose your
-writing folder, choose the documents to keep history for, and use
-**Save snapshot…** to save a draft. Select a snapshot to compare its documents
-with your current draft or restore them. The window reopens your last folder
-the next time it starts. See the
-[User Manual](docs/USER_MANUAL.md#tour-the-desktop-window) for a tour.
-
-In an authorized source checkout, see
-`platform/windows/scripts/nuitka/README.md` for standalone and onefile CLI
-builds and the windowed desktop build, using the project's virtual environment.
-
-### Development checks
-
-From `platform/windows/`:
-
-```powershell
-.venv/Scripts/python.exe -m pytest
-.venv/Scripts/python.exe -m ruff check plain_history
-.venv/Scripts/python.exe -m mypy plain_history
-.venv/Scripts/rumdl.exe check
-```
+Plain History is maintained by **Plain Text Office LLC**. This repository
+contains documentation and release downloads. Application source and build
+scripts are not distributed here.
 
 ## License
 
