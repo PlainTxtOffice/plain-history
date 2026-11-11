@@ -54,8 +54,8 @@ Plain History for Windows x64:
 
 | Download | File | Notes |
 | --- | --- | --- |
-| Installer | [Latest release](https://github.com/PlainTxtOffice/plain-history/releases/latest) | Choose the setup executable. Installs the CLI. Select the option to add `phist` to PATH, then open a new terminal. |
-| Portable | [Latest release](https://github.com/PlainTxtOffice/plain-history/releases/latest) | Choose the portable executable. Runs without installation. You can rename it to `phist.exe`. |
+| Installer | [plain-history-setup.exe](https://github.com/PlainTxtOffice/plain-history/releases/latest/download/plain-history-setup.exe) | Installs the CLI. Select the option to add `phist` to PATH, then open a new terminal. |
+| Portable | [phist.exe](https://github.com/PlainTxtOffice/plain-history/releases/latest/download/phist.exe) | Runs without installation. |
 | Checksums | [SHA256SUMS.txt](https://github.com/PlainTxtOffice/plain-history/releases/latest/download/SHA256SUMS.txt) | Checksums for both downloads. |
 
 Both downloads run without a separate Python installation. macOS and Linux
