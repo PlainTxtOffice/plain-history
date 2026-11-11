@@ -50,19 +50,19 @@ terminal; the downloads do not include a desktop window.
 
 ## Download
 
-Plain History 0.3.0 for Windows x64:
+Plain History for Windows x64:
 
 | Download | File | Notes |
 | --- | --- | --- |
-| Installer | [plain-history-cli-0.3.0-x64-setup.exe](https://github.com/PlainTxtOffice/plain-history/releases/download/v0.3.0/plain-history-cli-0.3.0-x64-setup.exe) | Installs the CLI. Select the option to add `phist` to PATH, then open a new terminal. |
-| Portable | [phist-0.3.0-windows-x64-portable.exe](https://github.com/PlainTxtOffice/plain-history/releases/download/v0.3.0/phist-0.3.0-windows-x64-portable.exe) | Runs without installation. You can rename it to `phist.exe`. |
-| Checksums | [SHA256SUMS.txt](https://github.com/PlainTxtOffice/plain-history/releases/download/v0.3.0/SHA256SUMS.txt) | Checksums for both downloads. |
+| Installer | [Latest release](https://github.com/PlainTxtOffice/plain-history/releases/latest) | Choose the setup executable. Installs the CLI. Select the option to add `phist` to PATH, then open a new terminal. |
+| Portable | [Latest release](https://github.com/PlainTxtOffice/plain-history/releases/latest) | Choose the portable executable. Runs without installation. You can rename it to `phist.exe`. |
+| Checksums | [SHA256SUMS.txt](https://github.com/PlainTxtOffice/plain-history/releases/latest/download/SHA256SUMS.txt) | Checksums for both downloads. |
 
 Both downloads run without a separate Python installation. macOS and Linux
 downloads are not available.
 
 The executables are unsigned. See the
-[release notes](https://github.com/PlainTxtOffice/plain-history/releases/tag/v0.3.0)
+[release notes](https://github.com/PlainTxtOffice/plain-history/releases/latest)
 for validation results and the installer limitations. To check a download,
 compare the output of `Get-FileHash -Algorithm SHA256 PATH_TO_DOWNLOAD` with
 `SHA256SUMS.txt`.
