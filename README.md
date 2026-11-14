@@ -1,4 +1,4 @@
-<!-- last_updated: 2026-11-09 -->
+<!-- last_updated: 2026-11-13 -->
 <!-- rumdl-disable MD033 MD041 -->
 <p align="center">
   <img src="assets/icons/plain_history.svg" alt="Plain History icon: a document page with a folded corner" width="96">
@@ -42,7 +42,9 @@ terminal; the downloads do not include a desktop window.
 
 ## Features
 
-- Choose which files to track with file names or glob patterns.
+- Choose which files to track with file names or glob patterns. There is no
+  removal command; to remove a rule,
+  [edit the saved rule list](docs/USER_MANUAL.md#change-or-remove-a-tracking-rule).
 - Save a snapshot with a message and an optional version label.
 - List saved snapshots and see what the latest one contains.
 - Compare a saved document with its current contents.
@@ -95,11 +97,13 @@ terminal's current folder.
 | `phist init` | Sets up history in an existing writing folder. |
 | `phist track "*.md"` | Selects files or patterns for future snapshots. |
 | `phist check` | Checks setup and lists currently selected files. |
-| `phist save` | Saves a snapshot with a message and an optional version label. |
+| `phist save` | Saves a snapshot with a message and an optional version label. `phist save "message"` supplies the message. |
 | `phist last` | Shows the latest snapshot and its saved filenames. |
-| `phist history` | Lists saved snapshots, newest first. |
-| `phist diff "chapter.md"` | Compares a saved document with its current contents. |
+| `phist history` | Lists saved snapshots, newest first. `phist history "chapter.md"` lists only the snapshots that contain that file. |
+| `phist diff "chapter.md"` | Compares a saved document with its current contents. Add `--snapshot N` to compare with an earlier snapshot. |
 | `phist restore` | Prompts for a snapshot and confirmation before restoring its files. |
+| `phist restore "chapter.md" --snapshot N` | Restores one file from snapshot `N` after confirmation. Add `--yes` to skip the confirmation. |
+| `phist --version` | Shows the installed version. |
 
 Use `phist COMMAND --help` for help with any command. Run `phist save` before
 restoring if you want to preserve your current draft.
@@ -109,6 +113,7 @@ restoring if you want to preserve your current draft.
 The [User Manual](docs/USER_MANUAL.md) explains the workflows in detail,
 including:
 
+- [Installation](docs/USER_MANUAL.md#installation-and-setup).
 - [File selection and glob patterns](docs/USER_MANUAL.md#glob-pattern-rules).
 - [Prompt defaults](docs/USER_MANUAL.md#read-defaults-in-terminal-prompts).
 - [Version labels](docs/USER_MANUAL.md#choose-a-version-label).
@@ -124,10 +129,11 @@ writing folder.
 ## Help and maintenance
 
 Start with the [troubleshooting guide](docs/USER_MANUAL.md#troubleshooting) or
-run `phist COMMAND --help`. For support, contact
-[tripp@plaintxtoffice.com](mailto:tripp@plaintxtoffice.com). Include your
-Windows version, the output of `phist --version`, the command you ran, and the
-error message. Do not include private documents.
+run `phist COMMAND --help`. For support, bug reports, and feature requests,
+contact [tripp@plaintxtoffice.com](mailto:tripp@plaintxtoffice.com) or use the
+[contact form](https://plaintxtoffice.com/contact/) on plaintxtoffice.com.
+Include your Windows version, the output of `phist --version`, the command you
+ran, and the error message. Do not include private documents.
 
 Plain History is maintained by **Plain Text Office LLC**. This repository
 contains documentation and release downloads. Application source and build

@@ -1,5 +1,5 @@
 ---
-last_updated: 2026-11-03
+last_updated: 2026-11-13
 version: 3.6.0
 product_versions:
   windows: "0.3.0"
@@ -12,15 +12,79 @@ product_versions:
 Plain History is a version history program for writers and plain-text documents.
 Plain History 0.3.0 can initialize a writing folder, remember which files you
 want to track, show the current selection, save snapshots with optional version
-labels, browse saved history, and compare or restore documents. It offers
-terminal commands and a desktop window that covers the same everyday tasks.
-Installation and environment setup are not covered here.
-<!-- Verified from: platform/windows/pyproject.toml [project]; platform/windows/plain_history/ui/cli/app.py; platform/windows/plain_history/ui/gui/app.py; platform/windows/plain_history/ui/gui/events/session.py [Session] -->
+labels, browse saved history, and compare or restore documents.
+
+The Windows downloads include the terminal program, `phist`, only. Plain History
+also has a desktop window that covers the same everyday tasks, but the downloads
+do not include it. Sections and steps about the desktop window apply only when
+your build of Plain History includes the window.
+<!-- Verified from: platform/windows/pyproject.toml [project]; platform/windows/plain_history/ui/cli/app.py; platform/windows/plain_history/ui/gui/app.py; platform/windows/plain_history/ui/gui/events/session.py [Session]; README.md; GitHub release v0.3.0 notes -->
 
 Tracking selects documents; `phist save` saves their contents. You can compare a
 saved UTF-8 document with its current contents and restore one file or all files
 recorded in a saved snapshot.
 <!-- Verified from: platform/windows/plain_history/ui/cli/app.py [save, history, track]; platform/windows/plain_history/ui/cli/documents.py [diff, restore]; platform/windows/plain_history/adapters/snapshots.py -->
+
+## Installation and Setup
+
+Plain History is released for Windows x64 as a terminal program. Both downloads
+run without a separate Python installation. macOS and Linux downloads are not
+available. Get the files from the
+[latest release](https://github.com/PlainTxtOffice/plain-history/releases/latest).
+
+| Download | What it is |
+| --- | --- |
+| `plain-history-setup.exe` | Installer for the terminal program, with an optional choice to add `phist` to PATH. |
+| `phist.exe` | Portable terminal program. Runs without installation. |
+| `SHA256SUMS.txt` | SHA-256 checksums for the downloads. |
+
+The executables are unsigned. The release notes state that installation, the
+optional PATH choice, upgrade, repair, and uninstall have not been verified on a
+clean Windows machine.
+
+Plain History needs no further configuration. It keeps each writing folder's
+history inside that folder, so the first step after installing is to initialize
+a writing folder; see
+[Initialize a writing folder](#initialize-a-writing-folder).
+<!-- Verified from: README.md; GitHub release v0.3.0 assets and notes; platform/windows/scripts/advanced_installer/README.md; platform/windows/scripts/nuitka/onefile.ps1; platform/windows/plain_history/adapters/repository.py [init] -->
+
+### Install with the Windows installer
+
+1. Download `plain-history-setup.exe`.
+1. Optionally check the file as described in
+   [Verify a download](#verify-a-download).
+1. Run the installer. Select the option to add `phist` to PATH so that you can
+   run `phist` from any folder.
+1. Open a new terminal.
+1. Run `phist --version`. It shows the installed version, such as
+   `phist 0.3.0`.
+<!-- Verified from: README.md; GitHub release v0.3.0 notes; platform/windows/scripts/advanced_installer/README.md; platform/windows/plain_history/ui/cli/app.py [_show_version] -->
+
+### Use the portable download
+
+1. Download `phist.exe` into a folder of your choice. Nothing is installed.
+1. Optionally check the file as described in
+   [Verify a download](#verify-a-download).
+1. Open a terminal in that folder and run `./phist.exe --version`.
+
+In the examples in this manual, replace `phist` with the path to the portable
+executable, for example `./phist.exe --help` from PowerShell in the folder
+containing it.
+<!-- Verified from: README.md; GitHub release v0.3.0 notes; platform/windows/scripts/nuitka/onefile.ps1; platform/windows/plain_history/ui/cli/app.py [_show_version] -->
+
+### Verify a download
+
+To check a download, compare its SHA-256 checksum with `SHA256SUMS.txt` from
+the same release. In PowerShell, run:
+
+```powershell
+Get-FileHash -Algorithm SHA256 PATH_TO_DOWNLOAD
+```
+
+Replace `PATH_TO_DOWNLOAD` with the downloaded file, then compare the `Hash`
+value with the entry for that file in `SHA256SUMS.txt`. Letter case does not
+matter. If the values differ, download the file again and do not run it.
+<!-- Verified from: README.md; GitHub release v0.3.0 assets and notes -->
 
 ## Starting the Program
 
@@ -33,20 +97,13 @@ phist --help
 ```
 
 For the portable CLI, run its executable with `--help`, such as
-`./phist.exe --help`. From the source project's `platform/windows/` folder,
-you can run:
-
-```powershell
-.venv/Scripts/python.exe -m plain_history --help
-```
+`./phist.exe --help`.
 
 These commands display the available commands. Running without a command also
 displays help. To see which version you have installed, run `phist --version`.
 Commands finish and return you to the terminal; there is no interactive phist
-session to quit. For the examples below, you can replace `phist` with
-`.venv/Scripts/python.exe -m plain_history` when running from the
-`platform/windows/` folder.
-<!-- Verified from: platform/windows/pyproject.toml [project.scripts]; platform/windows/plain_history/__main__.py; platform/windows/plain_history/ui/cli/app.py [app, main]; platform/windows/scripts/nuitka/onefile.ps1 -->
+session to quit.
+<!-- Verified from: platform/windows/pyproject.toml [project.scripts]; platform/windows/plain_history/ui/cli/app.py [app, main]; platform/windows/scripts/nuitka/onefile.ps1 -->
 
 ### Cancel a terminal command with Ctrl+C
 
@@ -69,19 +126,9 @@ the window itself.
 
 ### Open the desktop window
 
-The desktop window is available when running from source. The Windows CLI
-downloads do not include it. From the source project's `platform/windows/`
-folder, run:
-
-```powershell
-.venv/Scripts/python.exe -m plain_history.ui.gui.app
-```
-
-The equivalent command in a source installation is:
-
-```powershell
-phist-gui
-```
+The Windows downloads do not include the desktop window, so this section does
+not apply to them. A build that includes the window starts it with its own
+program, `phist-gui`, separately from `phist`.
 
 The first time it opens, the window shows **Keep a history of your writing**
 with a **Choose writing folder…** button. After you open a folder, later starts
@@ -111,7 +158,7 @@ for an existing setup.
 | Interface | What you can do |
 | --- | --- |
 | Terminal | Initialize a writing folder, add tracking rules, review matches, save snapshots, browse saved history, compare drafts, and restore documents. |
-| Desktop | Open or start history for a writing folder, choose documents (including removing rules), save snapshots, browse saved history, compare drafts, and restore documents. |
+| Desktop (not in the Windows downloads) | Open or start history for a writing folder, choose documents (including removing rules), save snapshots, browse saved history, compare drafts, and restore documents. |
 <!-- Verified from: platform/windows/plain_history/ui/cli/app.py [init, track, check, save]; platform/windows/plain_history/ui/gui/events/session.py [Session] -->
 
 ### Tour the desktop window
@@ -786,7 +833,7 @@ to review setup; there is no `status` command.
 **Ctrl+C** cancels a terminal save during its prompts or a restore confirmation.
 <!-- Verified from: platform/windows/plain_history/ui/cli/save.py [read_details]; platform/windows/plain_history/ui/cli/documents.py [restore] -->
 
-The desktop window's **File** menu on Windows:
+In a build that includes the desktop window, its **File** menu on Windows:
 
 | Menu command | Shortcut | What it does |
 | --- | --- | --- |
@@ -863,6 +910,8 @@ message bar for errors.
 | Error reading `history.json` or damaged stored content | Saved history is unreadable or inconsistent | Stop saving into this history folder and inspect the reported file; automatic repair is not available. |
 <!-- Verified from: platform/windows/plain_history/adapters/tracking.py [load, add, list_files]; platform/windows/plain_history/domains/tracking/rules.py [normalize_pattern]; platform/windows/plain_history/ui/cli/app.py [save]; platform/windows/plain_history/ui/cli/save.py; platform/windows/plain_history/adapters/snapshots.py; platform/windows/plain_history/adapters/snapshot_content.py; platform/windows/plain_history/adapters/snapshot_documents.py; platform/windows/plain_history/ui/cli/documents.py -->
 
+These rows apply only to a build that includes the desktop window:
+
 | Symptom | Likely cause | Resolution |
 | --- | --- | --- |
 | The desktop window opens on the welcome page instead of your folder | The remembered folder was moved or renamed, or its `.plain_history` folder is gone | Choose **Choose writing folder…** and select the folder at its new location. |
@@ -872,6 +921,16 @@ message bar for errors.
 | A rule is not added and the window shows `Problem:` | The rule is outside the writing folder, invalid, or names a bare folder | Use **Add folder…**, or a pattern such as `chapters/**/*`. |
 | The message bar shows `Problem:` after an action | The action failed and nothing was saved or restored by it, except as the message states | Read the text after `Problem:`; most messages match the terminal rows above. |
 <!-- Verified from: platform/windows/plain_history/ui/gui/events/session.py [open_last_folder, save_snapshot, _restore]; platform/windows/plain_history/ui/gui/views/root_window/snapshot.py [_update_buttons, show_snapshot]; platform/windows/plain_history/ui/gui/views/tracking_dialog.py [add_rules, _relative_rule]; platform/windows/plain_history/ui/gui/views/root_window/window.py [show_error] -->
+
+### Get help or send feedback
+
+If these steps do not resolve a problem, or to report a bug or request a
+feature, contact [tripp@plaintxtoffice.com](mailto:tripp@plaintxtoffice.com) or
+use the [contact form](https://plaintxtoffice.com/contact/) on
+plaintxtoffice.com. Include your Windows version, the output of
+`phist --version`, the command you ran, and the error message. Do not include
+private documents.
+<!-- Verified from: README.md; platform/windows/plain_history/ui/cli/app.py [_show_version] -->
 
 ## FAQ
 
@@ -902,12 +961,13 @@ with `--path`.
 
 ### Do I need the terminal if I use the desktop window?
 
-No. The desktop window covers starting history, choosing documents, saving,
-browsing, comparing, and restoring. A few options exist only in the terminal:
-filtering history by one document, choosing a different working folder for a
-single command with `--path`, and restoring without a confirmation using
-`--yes`.
-<!-- Verified from: platform/windows/plain_history/ui/gui/events/session.py [Session]; platform/windows/plain_history/ui/cli/app.py [history, Root]; platform/windows/plain_history/ui/cli/documents.py [restore] -->
+With the Windows downloads, yes: they include the terminal program only, so
+every task uses `phist` commands. In a build that includes the desktop window,
+no: the window covers starting history, choosing documents, saving, browsing,
+comparing, and restoring. A few options exist only in the terminal: filtering
+history by one document, choosing a different working folder for a single
+command with `--path`, and restoring without a confirmation using `--yes`.
+<!-- Verified from: README.md; GitHub release v0.3.0 notes; platform/windows/plain_history/ui/gui/events/session.py [Session]; platform/windows/plain_history/ui/cli/app.py [history, Root]; platform/windows/plain_history/ui/cli/documents.py [restore] -->
 
 ### What happens if I repeat init or track?
 
