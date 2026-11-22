@@ -1,6 +1,6 @@
 ---
-last_updated: 2026-11-13
-version: 3.6.0
+last_updated: 2026-11-22
+version: 3.6.1
 product_versions:
   windows: "0.3.0"
 ---
@@ -925,12 +925,18 @@ These rows apply only to a build that includes the desktop window:
 ### Get help or send feedback
 
 If these steps do not resolve a problem, or to report a bug or request a
-feature, contact [tripp@plaintxtoffice.com](mailto:tripp@plaintxtoffice.com) or
-use the [contact form](https://plaintxtoffice.com/contact/) on
-plaintxtoffice.com. Include your Windows version, the output of
-`phist --version`, the command you ran, and the error message. Do not include
-private documents.
-<!-- Verified from: README.md; platform/windows/plain_history/ui/cli/app.py [_show_version] -->
+feature, write to
+[support@plaintxtoffice.com](mailto:support@plaintxtoffice.com) or use the
+[contact page](https://plaintxtoffice.com/contact/). Include your Windows
+version, the output of `phist --version`, the command you ran, and the error
+message. Do not include private documents.
+
+In a build that includes the desktop window, choose **Help > Send Feedback…**.
+**Report a Bug** and **Request a Feature** open a draft email to that address in
+your email app, with your app version and Windows version filled in. **Open
+Contact Form** opens the contact page in your browser. Nothing is sent unless
+you send it.
+<!-- Verified from: README.md; platform/windows/plain_history/ui/cli/app.py [_show_version]; platform/windows/plain_history/ui/gui/views/root_window/window.py [_build_help_menu]; platform/windows/plain_history/ui/gui/feedback.py [FeedbackDialog, feedback_mailto] -->
 
 ## FAQ
 

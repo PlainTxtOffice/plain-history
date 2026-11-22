@@ -1,4 +1,4 @@
-<!-- last_updated: 2026-11-13 -->
+<!-- last_updated: 2026-11-22 -->
 <!-- rumdl-disable MD033 MD041 -->
 <p align="center">
   <img src="assets/icons/plain_history.svg" alt="Plain History icon: a document page with a folded corner" width="96">
@@ -58,7 +58,7 @@ Plain History for Windows x64:
 | --- | --- | --- |
 | Installer | [plain-history-setup.exe](https://github.com/PlainTxtOffice/plain-history/releases/latest/download/plain-history-setup.exe) | Installs the CLI. Select the option to add `phist` to PATH, then open a new terminal. |
 | Portable | [phist.exe](https://github.com/PlainTxtOffice/plain-history/releases/latest/download/phist.exe) | Runs without installation. |
-| Checksums | [SHA256SUMS.txt](https://github.com/PlainTxtOffice/plain-history/releases/latest/download/SHA256SUMS.txt) | Checksums for both downloads. |
+| Checksums | [SHA256SUMS.txt](https://github.com/PlainTxtOffice/plain-history/releases/latest/download/SHA256SUMS.txt) | Checksums for the installer, the portable program, and `LICENSE`. |
 
 Both downloads run without a separate Python installation. macOS and Linux
 downloads are not available.
@@ -129,15 +129,19 @@ writing folder.
 ## Help and maintenance
 
 Start with the [troubleshooting guide](docs/USER_MANUAL.md#troubleshooting) or
-run `phist COMMAND --help`. For support, bug reports, and feature requests,
-contact [tripp@plaintxtoffice.com](mailto:tripp@plaintxtoffice.com) or use the
-[contact form](https://plaintxtoffice.com/contact/) on plaintxtoffice.com.
-Include your Windows version, the output of `phist --version`, the command you
-ran, and the error message. Do not include private documents.
+run `phist COMMAND --help`.
 
 Plain History is maintained by **Plain Text Office LLC**. This repository
 contains documentation and release downloads. Application source and build
 scripts are not distributed here.
+
+## Feedback
+
+Send bug reports, feature requests, and support questions to
+[support@plaintxtoffice.com](mailto:support@plaintxtoffice.com) or through the
+[contact page](https://plaintxtoffice.com/contact/). Include your Windows
+version, the output of `phist --version`, the command you ran, and the error
+message. Do not include private documents.
 
 ## License
 
