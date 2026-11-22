@@ -1,7 +1,7 @@
 <!-- last_updated: 2026-11-22 -->
 <!-- rumdl-disable MD033 MD041 -->
 <p align="center">
-  <img src="assets/icons/plain_history.svg" alt="Plain History icon: a document page with a folded corner" width="96">
+  <img src="assets/icons/icon-github-readme.svg" alt="Plain History icon: a document page with a folded corner" width="96">
 </p>
 
 <h1 align="center">Plain History</h1>
