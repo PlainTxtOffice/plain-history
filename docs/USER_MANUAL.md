@@ -1,8 +1,9 @@
 ---
 last_updated: 2026-11-22
-version: 3.6.1
+version: 3.7.1
 product_versions:
   windows: "0.3.0"
+generated_from: "dev-docs/specs/USER_MANUAL_SPEC.instructions.md"
 ---
 
 # User Manual
@@ -228,6 +229,7 @@ folder and reopens it the next time you start the desktop window.
 Prerequisite: initialize the writing folder first.
 
 1. Choose individual files or glob patterns relative to the writing folder.
+
 1. Run a command such as:
 
    ```powershell
@@ -235,6 +237,7 @@ Prerequisite: initialize the writing folder first.
    ```
 
 1. Review `Tracking rules:` and `Matching files:` in the output.
+
 1. Look for `Selection saved. No snapshot created.`
 
 Quote patterns so your shell passes them unchanged. Multiple files and patterns
@@ -922,21 +925,8 @@ These rows apply only to a build that includes the desktop window:
 | The message bar shows `Problem:` after an action | The action failed and nothing was saved or restored by it, except as the message states | Read the text after `Problem:`; most messages match the terminal rows above. |
 <!-- Verified from: platform/windows/plain_history/ui/gui/events/session.py [open_last_folder, save_snapshot, _restore]; platform/windows/plain_history/ui/gui/views/root_window/snapshot.py [_update_buttons, show_snapshot]; platform/windows/plain_history/ui/gui/views/tracking_dialog.py [add_rules, _relative_rule]; platform/windows/plain_history/ui/gui/views/root_window/window.py [show_error] -->
 
-### Get help or send feedback
-
-If these steps do not resolve a problem, or to report a bug or request a
-feature, write to
-[support@plaintxtoffice.com](mailto:support@plaintxtoffice.com) or use the
-[contact page](https://plaintxtoffice.com/contact/). Include your Windows
-version, the output of `phist --version`, the command you ran, and the error
-message. Do not include private documents.
-
-In a build that includes the desktop window, choose **Help > Send Feedback…**.
-**Report a Bug** and **Request a Feature** open a draft email to that address in
-your email app, with your app version and Windows version filled in. **Open
-Contact Form** opens the contact page in your browser. Nothing is sent unless
-you send it.
-<!-- Verified from: README.md; platform/windows/plain_history/ui/cli/app.py [_show_version]; platform/windows/plain_history/ui/gui/views/root_window/window.py [_build_help_menu]; platform/windows/plain_history/ui/gui/feedback.py [FeedbackDialog, feedback_mailto] -->
+If these steps do not resolve a problem, report it as described in
+[Feedback](#feedback).
 
 ## FAQ
 
@@ -981,6 +971,27 @@ command with `--path`, and restoring without a confirmation using `--yes`.
 and adds only new normalized rules. Overlapping rules do not duplicate files in
 the match list.
 <!-- Verified from: platform/windows/plain_history/adapters/repository.py [init]; platform/windows/plain_history/adapters/tracking.py [add, list_files] -->
+
+## Feedback
+
+To report a bug or request a feature, write to
+[support@plaintxtoffice.com](mailto:support@plaintxtoffice.com) or use the
+[contact page](https://plaintxtoffice.com/contact/). Include your Windows
+version, the output of `phist --version`, the command you ran, and the error
+message. Do not include private documents.
+<!-- Verified from: README.md; platform/windows/plain_history/ui/cli/app.py [_show_version]; platform/windows/plain_history/ui/gui/feedback.py [FEEDBACK_ADDRESS, CONTACT_URL] -->
+
+| Platform | How to open feedback |
+| --- | --- |
+| Windows terminal program (`phist`) | The terminal program has no feedback command; use the email address or contact page above. |
+| Windows desktop window (not in the downloads) | Choose **Help** > **Send Feedback...**. |
+<!-- Verified from: platform/windows/plain_history/ui/cli/app.py; platform/windows/plain_history/ui/gui/views/root_window/window.py [_build_help_menu] -->
+
+In the desktop window's **Send Feedback** dialog, **Report a Bug** and
+**Request a Feature** open a draft email to that address in your email app,
+with your app version and Windows version filled in. **Open Contact Form**
+opens the contact page in your browser. Nothing is sent unless you send it.
+<!-- Verified from: platform/windows/plain_history/ui/gui/feedback.py [FeedbackDialog, feedback_mailto] -->
 
 ## Glossary
 
