@@ -138,7 +138,7 @@ scripts are not distributed here.
 ## Feedback
 
 Send bug reports, feature requests, and support questions to
-[support@plaintxtoffice.com](mailto:support@plaintxtoffice.com) or through the
+[feedback@plaintxtoffice.com](mailto:feedback@plaintxtoffice.com) or through the
 [contact page](https://plaintxtoffice.com/contact/). Include your Windows
 version, the output of `phist --version`, the command you ran, and the error
 message. Do not include private documents.

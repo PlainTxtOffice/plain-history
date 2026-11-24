@@ -975,7 +975,7 @@ the match list.
 ## Feedback
 
 To report a bug or request a feature, write to
-[support@plaintxtoffice.com](mailto:support@plaintxtoffice.com) or use the
+[feedback@plaintxtoffice.com](mailto:feedback@plaintxtoffice.com) or use the
 [contact page](https://plaintxtoffice.com/contact/). Include your Windows
 version, the output of `phist --version`, the command you ran, and the error
 message. Do not include private documents.
